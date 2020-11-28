@@ -1,0 +1,9 @@
+D:\Development\Projects\2020\MonoGame2\Flat\bin\Debug\netstandard2.1\Flat.deps.json
+D:\Development\Projects\2020\MonoGame2\Flat\bin\Debug\netstandard2.1\Flat.dll
+D:\Development\Projects\2020\MonoGame2\Flat\bin\Debug\netstandard2.1\Flat.pdb
+D:\Development\Projects\2020\MonoGame2\Flat\obj\Debug\netstandard2.1\Flat.csprojAssemblyReference.cache
+D:\Development\Projects\2020\MonoGame2\Flat\obj\Debug\netstandard2.1\Flat.AssemblyInfoInputs.cache
+D:\Development\Projects\2020\MonoGame2\Flat\obj\Debug\netstandard2.1\Flat.AssemblyInfo.cs
+D:\Development\Projects\2020\MonoGame2\Flat\obj\Debug\netstandard2.1\Flat.csproj.CoreCompileInputs.cache
+D:\Development\Projects\2020\MonoGame2\Flat\obj\Debug\netstandard2.1\Flat.dll
+D:\Development\Projects\2020\MonoGame2\Flat\obj\Debug\netstandard2.1\Flat.pdb

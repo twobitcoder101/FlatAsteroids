@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "jtc3NHqlMOVAADvH4yGK25wXJGa9Td8QYtbL04E8eS/NEzM0q31Sfs85SfXInwyNviR7ouuIfxC40k/933DKhw==",
+  "success": true,
+  "projectFilePath": "D:\\Development\\Projects\\2020\\MonoGame2\\Flat\\Flat.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\cwhee\\.nuget\\packages\\monogame.framework.desktopgl\\3.8.0.1641\\monogame.framework.desktopgl.3.8.0.1641.nupkg.sha512"
+  ],
+  "logs": []
+}
