@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Audio;
 using Flat;
 using Flat.Graphics;
 using Flat.Input;
@@ -20,6 +21,9 @@ namespace FlatAsteroids
 
         
         private List<Entity> entities;
+
+        private SoundEffect rocketSound;
+        private SoundEffectInstance rocketSoundInstance;
 
         public Game1()
         {
@@ -78,7 +82,8 @@ namespace FlatAsteroids
 
         protected override void LoadContent()
         {
-
+            this.rocketSound = this.Content.Load<SoundEffect>("expl02");
+            this.rocketSoundInstance = this.rocketSound.CreateInstance();
         }
 
         protected override void Update(GameTime gameTime)
@@ -115,7 +120,22 @@ namespace FlatAsteroids
 
             if(keyboard.IsKeyDown(Keys.Up))
             {
-                player.ApplyForce(50f * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                player.ApplyRocketForce(50f * (float)gameTime.ElapsedGameTime.TotalSeconds);
+
+                if (this.rocketSoundInstance.State != SoundState.Playing)
+                {
+                    this.rocketSoundInstance.Volume = 0.2f;
+                    this.rocketSoundInstance.Play();
+                }
+            }
+            else
+            {
+                player.DisableRocketForce();
+
+                if(this.rocketSoundInstance.State == SoundState.Playing)
+                {
+                    this.rocketSoundInstance.Stop();
+                }
             }
 
 

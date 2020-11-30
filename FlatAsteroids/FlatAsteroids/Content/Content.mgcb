@@ -13,3 +13,9 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin C:/Users/cwhee/Desktop/Sounds/expl02.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:C:/Users/cwhee/Desktop/Sounds/expl02.wav;expl02.wav
+
