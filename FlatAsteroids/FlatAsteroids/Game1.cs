@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Audio;
 using Flat;
 using Flat.Graphics;
 using Flat.Input;
+using Flat.Physics;
 
 namespace FlatAsteroids
 {
@@ -19,7 +20,8 @@ namespace FlatAsteroids
         private Shapes shapes;
         private Camera camera;
 
-        
+        private int loopCounter = 0;
+
         private List<Entity> entities;
 
         private SoundEffect rocketSound;
@@ -65,7 +67,7 @@ namespace FlatAsteroids
             this.entities.Add(player);
 
 
-            int asteroidCount = 5;
+            int asteroidCount = 30;
 
             for (int i = 0; i < asteroidCount; i++)
             {
@@ -93,6 +95,11 @@ namespace FlatAsteroids
 
             FlatMouse mouse = FlatMouse.Instance;
             mouse.Update();
+
+            if(keyboard.IsKeyClicked(Keys.OemTilde))
+            {
+                Console.WriteLine(this.loopCounter);
+            }
 
             if(keyboard.IsKeyClicked(Keys.A))
             {
@@ -142,6 +149,29 @@ namespace FlatAsteroids
             for (int i = 0; i < this.entities.Count; i++)
             {
                 this.entities[i].Update(gameTime, this.camera);
+            }
+
+
+            this.loopCounter = 0;
+
+            for(int i = 0; i < this.entities.Count - 1; i++)
+            {
+                Entity a = this.entities[i];
+                Circle ca = new Circle(a.Position, a.Radius);
+
+                for(int j = i + 1; j < this.entities.Count; j++)
+                {
+                    this.loopCounter++;
+
+                    Entity b = this.entities[j];
+                    Circle cb = new Circle(b.Position, b.Radius);
+
+                    if (Collision.IntersectCircles(ca, cb))
+                    {
+                        a.CircleColor = Color.Red;
+                        b.CircleColor = Color.Red;
+                    }
+                }
             }
 
             base.Update(gameTime);

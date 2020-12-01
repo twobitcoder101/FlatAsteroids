@@ -14,6 +14,17 @@ namespace FlatAsteroids
         protected float angle;
         protected Color color;
         protected float radius;
+        public Color CircleColor;
+
+        public Vector2 Position
+        {
+            get { return this.position; }
+        }
+
+        public float Radius
+        {
+            get { return this.radius; }
+        }
 
         public Entity(Vector2[] vertices, Vector2 position, Color color)
         {
@@ -48,6 +59,8 @@ namespace FlatAsteroids
             if (this.position.X > camMax.X) { this.position.X -= camViewWidth; }
             if (this.position.Y < camMin.Y) { this.position.Y += camViewHeight; }
             if (this.position.Y > camMax.Y) { this.position.Y -= camViewHeight; }
+
+            this.CircleColor = Color.White;
         }
 
         public virtual void Draw(Shapes shapes)
@@ -55,7 +68,7 @@ namespace FlatAsteroids
             FlatTransform transform = new FlatTransform(this.position, this.angle, 1f);
             shapes.DrawPolygon(this.vertices, transform, 1f, this.color);
 
-            shapes.DrawCircle(this.position.X, this.position.Y, this.radius, 32, 1f, Color.White);
+            shapes.DrawCircle(this.position.X, this.position.Y, this.radius, 32, 1f, this.CircleColor);
         }
     }
 }

@@ -90,5 +90,19 @@ namespace Flat
                 position.X * transform.CosScaleX - position.Y * transform.SinScaleY + transform.PosX, 
                 position.X * transform.SinScaleX + position.Y * transform.CosScaleY + transform.PosY);
         }
+
+        public static float Distance(Vector2 a, Vector2 b)
+        {
+            float dx = b.X - a.X;
+            float dy = b.Y - a.Y;
+            return MathF.Sqrt(dx * dx + dy * dy);
+        }
+
+        public static float DistanceSquared(Vector2 a, Vector2 b)
+        {
+            float dx = b.X - a.X;
+            float dy = b.Y - a.Y;
+            return dx * dx + dy * dy;
+        }
     }
 }
