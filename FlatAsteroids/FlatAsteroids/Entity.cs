@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework;
 using Flat;
 using Flat.Graphics;
+using Flat.Physics;
 
 namespace FlatAsteroids
 {
@@ -12,6 +13,7 @@ namespace FlatAsteroids
         protected Vector2 velocity;
         protected float angle;
         protected Color color;
+        protected float radius;
 
         public Entity(Vector2[] vertices, Vector2 position, Color color)
         {
@@ -20,6 +22,17 @@ namespace FlatAsteroids
             this.velocity = Vector2.Zero;
             this.angle = 0f;
             this.color = color;
+
+            if (vertices != null)
+            {
+                this.radius = Entity.FindCollisionCircleRadius(vertices);
+            }
+        }
+
+        protected static float FindCollisionCircleRadius(Vector2[] vertices)
+        {
+            float polygonArea = PolygonHelper.FindPolygonArea(vertices);
+            return MathF.Sqrt(polygonArea / MathHelper.Pi);
         }
 
         public virtual void Update(GameTime gameTime, Camera camera)
@@ -41,6 +54,8 @@ namespace FlatAsteroids
         {
             FlatTransform transform = new FlatTransform(this.position, this.angle, 1f);
             shapes.DrawPolygon(this.vertices, transform, 1f, this.color);
+
+            shapes.DrawCircle(this.position.X, this.position.Y, this.radius, 32, 1f, Color.White);
         }
     }
 }

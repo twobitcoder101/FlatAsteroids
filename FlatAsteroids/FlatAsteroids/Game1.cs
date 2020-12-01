@@ -124,7 +124,7 @@ namespace FlatAsteroids
 
                 if (this.rocketSoundInstance.State != SoundState.Playing)
                 {
-                    this.rocketSoundInstance.Volume = 0.2f;
+                    this.rocketSoundInstance.Volume = 0.1f;
                     this.rocketSoundInstance.Play();
                 }
             }

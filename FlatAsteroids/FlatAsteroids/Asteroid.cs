@@ -53,6 +53,8 @@ namespace FlatAsteroids
             float speed = RandomHelper.RandomSingle(rand, minSpeed, maxSpeed);
 
             this.velocity = velDir * speed;
+
+            this.radius = Entity.FindCollisionCircleRadius(vertices);
         }
     }
 }
