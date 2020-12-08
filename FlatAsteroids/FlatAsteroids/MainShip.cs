@@ -60,7 +60,7 @@ namespace FlatAsteroids
             base.Update(gameTime, camera);
         }
 
-        public override void Draw(Shapes shapes)
+        public override void Draw(Shapes shapes, bool displayCollisionCircles)
         {
             if(this.isRocketForce)
             {
@@ -68,7 +68,7 @@ namespace FlatAsteroids
                 shapes.DrawPolygon(this.rocketVertices, transform, 1f, Color.Yellow);
             }
 
-            base.Draw(shapes);
+            base.Draw(shapes, displayCollisionCircles);
         }
 
         public void ApplyRocketForce(float amount)

@@ -13,7 +13,7 @@ namespace FlatAsteroids
         protected Vector2 velocity;
         protected float angle;
         protected Color color;
-        protected float radius;
+        protected float radius;        
         public Color CircleColor;
 
         public Vector2 Position
@@ -38,12 +38,18 @@ namespace FlatAsteroids
             {
                 this.radius = Entity.FindCollisionCircleRadius(vertices);
             }
-        }
 
+        }
+        
         protected static float FindCollisionCircleRadius(Vector2[] vertices)
         {
             float polygonArea = PolygonHelper.FindPolygonArea(vertices);
             return MathF.Sqrt(polygonArea / MathHelper.Pi);
+        }
+
+        public void Move(Vector2 amount)
+        {
+            this.position += amount;
         }
 
         public virtual void Update(GameTime gameTime, Camera camera)
@@ -63,12 +69,15 @@ namespace FlatAsteroids
             this.CircleColor = Color.White;
         }
 
-        public virtual void Draw(Shapes shapes)
+        public virtual void Draw(Shapes shapes, bool displayCollisionCircles = false)
         {
             FlatTransform transform = new FlatTransform(this.position, this.angle, 1f);
             shapes.DrawPolygon(this.vertices, transform, 1f, this.color);
 
-            shapes.DrawCircle(this.position.X, this.position.Y, this.radius, 32, 1f, this.CircleColor);
+            if (displayCollisionCircles)
+            {
+                shapes.DrawCircle(this.position.X, this.position.Y, this.radius, 32, 1f, this.CircleColor);
+            }
         }
     }
 }

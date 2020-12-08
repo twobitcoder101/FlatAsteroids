@@ -27,6 +27,8 @@ namespace FlatAsteroids
         private SoundEffect rocketSound;
         private SoundEffectInstance rocketSoundInstance;
 
+        private bool displayCollisionCircles = true;
+
         public Game1()
         {
             this.graphics = new GraphicsDeviceManager(this);
@@ -101,6 +103,11 @@ namespace FlatAsteroids
                 Console.WriteLine(this.loopCounter);
             }
 
+            if(keyboard.IsKeyClicked(Keys.B))
+            {
+                this.displayCollisionCircles = !this.displayCollisionCircles;
+            }
+
             if(keyboard.IsKeyClicked(Keys.A))
             {
                 this.camera.IncZoom();
@@ -166,8 +173,13 @@ namespace FlatAsteroids
                     Entity b = this.entities[j];
                     Circle cb = new Circle(b.Position, b.Radius);
 
-                    if (Collision.IntersectCircles(ca, cb))
+                    if (Collision.IntersectCircles(ca, cb, out float depth, out Vector2 normal))
                     {
+                        Vector2 mtv = depth * normal;
+
+                        a.Move(-mtv / 2f);
+                        b.Move(mtv / 2f);
+
                         a.CircleColor = Color.Red;
                         b.CircleColor = Color.Red;
                     }
@@ -186,7 +198,7 @@ namespace FlatAsteroids
 
             for (int i = 0; i < this.entities.Count; i++)
             {
-                this.entities[i].Draw(this.shapes);
+                this.entities[i].Draw(this.shapes, this.displayCollisionCircles);
             }
 
             this.shapes.End();
