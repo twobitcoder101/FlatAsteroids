@@ -90,11 +90,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Development\\Projects\\2020\\MonoGame2\\Flat\\Flat.csproj",
+      "projectUniqueName": "D:\\Development\\Projects\\2021\\MonoGame\\Flat\\Flat.csproj",
       "projectName": "Flat",
-      "projectPath": "D:\\Development\\Projects\\2020\\MonoGame2\\Flat\\Flat.csproj",
+      "projectPath": "D:\\Development\\Projects\\2021\\MonoGame\\Flat\\Flat.csproj",
       "packagesPath": "C:\\Users\\cwhee\\.nuget\\packages\\",
-      "outputPath": "D:\\Development\\Projects\\2020\\MonoGame2\\Flat\\obj\\",
+      "outputPath": "D:\\Development\\Projects\\2021\\MonoGame\\Flat\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -149,7 +149,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

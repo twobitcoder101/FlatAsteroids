@@ -16,9 +16,31 @@ namespace FlatAsteroids
         protected float radius;        
         public Color CircleColor;
 
+        protected float area;
+        protected float density;
+        protected float mass;
+        protected float invMass;
+        protected float restitution;
+
+        public float InvMass
+        {
+            get { return this.invMass; }
+        }
+
+        public float Restitution
+        {
+            get { return this.restitution; }
+        }
+
         public Vector2 Position
         {
             get { return this.position; }
+        }
+
+        public Vector2 Velocity
+        {
+            get { return this.velocity; }
+            set { this.velocity = value; }
         }
 
         public float Radius
@@ -26,7 +48,7 @@ namespace FlatAsteroids
             get { return this.radius; }
         }
 
-        public Entity(Vector2[] vertices, Vector2 position, Color color)
+        public Entity(Vector2[] vertices, Vector2 position, Color color, float density, float restitution)
         {
             this.vertices = vertices;
             this.position = position;
@@ -39,6 +61,11 @@ namespace FlatAsteroids
                 this.radius = Entity.FindCollisionCircleRadius(vertices);
             }
 
+            this.area = 0f;
+            this.density = Util.Clamp(density, CommonDensities.MinDensity, CommonDensities.MaxDensity);
+            this.restitution = Util.Clamp(restitution, 0f, 1f);
+            this.mass = 0f;
+            this.invMass = 1f;
         }
         
         protected static float FindCollisionCircleRadius(Vector2[] vertices)

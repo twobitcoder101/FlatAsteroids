@@ -1,6 +1,6 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using System;
+﻿using System;
+using Microsoft.Xna.Framework;
+//using Microsoft.Xna.Framework.Graphics;
 
 namespace Flat
 {
@@ -103,6 +103,12 @@ namespace Flat
             float dx = b.X - a.X;
             float dy = b.Y - a.Y;
             return dx * dx + dy * dy;
+        }
+
+        public static float Dot(Vector2 a, Vector2 b)
+        {
+            // a · b = ax × bx + ay × by
+            return a.X * b.X + a.Y * b.Y;
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Flat.Graphics
         public readonly static float MaxZ = 2048f;
 
         public readonly static int MinZoom = 1;
-        public readonly static int MaxZoom = 20;
+        public readonly static int MaxZoom = 40;
 
         private Vector2 position;
         private float baseZ;

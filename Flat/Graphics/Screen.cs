@@ -75,11 +75,11 @@ namespace Flat.Graphics
                 throw new ArgumentNullException("sprites");
             }
 
-#if DEBUG
-            this.game.GraphicsDevice.Clear(Color.HotPink);
-#else
+//#if DEBUG
+//            this.game.GraphicsDevice.Clear(Color.HotPink);
+//#else
             this.game.GraphicsDevice.Clear(Color.Black);
-#endif
+//#endif
 
             Rectangle destinationRectangle = this.CalculateDestinationRectangle();
 

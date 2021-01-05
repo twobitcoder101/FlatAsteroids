@@ -65,7 +65,7 @@ namespace FlatAsteroids
             vertices[3] = new Vector2(-5, 3);
             vertices[4] = new Vector2(-10, 10);
 
-            MainShip player = new MainShip(vertices, new Vector2(0, 0), Color.LightGreen);
+            MainShip player = new MainShip(vertices, new Vector2(0, 0), Color.LightGreen, CommonDensities.Steel, 0.6f);
             this.entities.Add(player);
 
 
@@ -73,7 +73,7 @@ namespace FlatAsteroids
 
             for (int i = 0; i < asteroidCount; i++)
             {
-                Asteroid asteroid = new Asteroid(rand, this.camera);
+                Asteroid asteroid = new Asteroid(rand, this.camera, CommonDensities.Rock, 0.6f);
                 this.entities.Add(asteroid);
             }
 
@@ -180,6 +180,8 @@ namespace FlatAsteroids
                         a.Move(-mtv / 2f);
                         b.Move(mtv / 2f);
 
+                        Game1.SolveCollision(a, b, normal);
+
                         a.CircleColor = Color.Red;
                         b.CircleColor = Color.Red;
                     }
@@ -209,6 +211,26 @@ namespace FlatAsteroids
 
 
             base.Draw(gameTime);
+        }
+
+        public static void SolveCollision(Entity a, Entity b, Vector2 normal)
+        {
+            Vector2 relVel = b.Velocity - a.Velocity;
+
+            if(Util.Dot(relVel, normal) > 0f)
+            {
+                return;
+            }
+
+            float e = MathHelper.Min(a.Restitution, b.Restitution);
+
+            float j = -(1f + e) * Util.Dot(relVel, normal);
+            j /= a.InvMass + b.InvMass;
+
+            Vector2 impulse = j * normal;
+
+            a.Velocity -= a.InvMass * impulse;
+            b.Velocity += b.InvMass * impulse;
         }
     }
 }

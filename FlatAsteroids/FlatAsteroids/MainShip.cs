@@ -12,8 +12,8 @@ namespace FlatAsteroids
         private double randomRocketTime;
         private double randomRocketStartTime;
 
-        public MainShip(Vector2[] vertices, Vector2 position, Color color)
-            : base(vertices, position, color)
+        public MainShip(Vector2[] vertices, Vector2 position, Color color, float density, float restitution)
+            : base(vertices, position, color, density, restitution)
         {
             this.isRocketForce = false;
 
@@ -24,6 +24,10 @@ namespace FlatAsteroids
 
             this.randomRocketTime = 60d;
             this.randomRocketStartTime = 0d;
+
+            this.area = MathHelper.Pi * this.radius * this.radius;
+            this.mass = this.area * density;
+            this.invMass = 1f / this.mass;
         }
 
         public void Rotate(float amount)

@@ -7,8 +7,8 @@ namespace FlatAsteroids
 {
     public class Asteroid : Entity
     {
-        public Asteroid(Random rand, Camera camera)
-            : base(null, Vector2.Zero, Color.Brown)
+        public Asteroid(Random rand, Camera camera, float density, float restitution)
+            : base(null, Vector2.Zero, Color.Brown, density, restitution)
         {
             int minPoints = 6;
             int maxPoints = 10;
@@ -55,6 +55,11 @@ namespace FlatAsteroids
             this.velocity = velDir * speed;
 
             this.radius = Entity.FindCollisionCircleRadius(vertices);
+
+            this.area = MathHelper.Pi * this.radius * this.radius;
+            this.mass = this.area * density;
+            this.invMass = 1f / this.mass;
         }
+
     }
 }
